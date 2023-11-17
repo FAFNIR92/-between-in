@@ -1,0 +1,45 @@
+/*Table structure for table `products` */
+
+DROP TABLE IF EXISTS `productos`;
+
+CREATE TABLE `productos` (
+  `IdProducto` varchar(15) NOT NULL,
+  `Nombre` varchar(70) NOT NULL,
+  `IdCategoria` varchar(50) NOT NULL,
+  `Escala` varchar(10) NOT NULL,
+  `Vendedor` varchar(50) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Cantidad` smallint(6) NOT NULL,
+  `PrecioCompra` decimal(10,2) NOT NULL,
+  `PrecioVentaSugerido` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`IdProducto`),
+  KEY `IdCategoria` (`IdCategoria`),
+  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`IdCategoria`) REFERENCES `categorias` (`IdCategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `products` */
+
+1. Muestra todos los productos cuyo precio de venta sugerido está entre 50 y 100.
+
+SELECT * FROM Productos 
+WHERE PrecioVentaSugerido BETWEEN 50 AND 100;
+
+7. Muestra todos los productos cuyo nombre está en ('1940s Ford truck', '1939
+Cadillac Limousine', '1956 Porsche 356A Coupe'). 
+
+SELECT * FROM productos
+WHERE Nombre IN ('1940s Ford truck', '1939 Cadillac Limousine', '1956 Porsche 356A Coupe');
+
+SELECT * FROM productos 
+WHERE Nombre IN ('1940s Ford truck', '1939 Cadillac Limousine', '1956 Porsche 356A Coupe');
+
+Trabajo Adiconal:
+
+SELECT * FROM productos
+WHERE PrecioVentaSugerido BETWEEN 50.00 AND 100.00;
+
+SELECT * FROM productos
+WHERE IdCategoria IN ('Classic Cars', 'Planes');
+
+
+
